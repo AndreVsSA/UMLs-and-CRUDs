@@ -1,0 +1,48 @@
+@startuml
+
+class pessoa{
+
+    -string nome
+    -int idade
+    -string telefone
+    -string endereco
+    -string cpf 
+
+
+}
+class medico extends pessoa {
+        -string crm
+        -string especialidade
+}
+class paciente extends pessoa{
+    -string id
+    
+}
+class consulta {
+    -medico medico
+    -paciente paciente
+    -string data
+    -string horario
+    -int sala
+}
+interface fichario{
+    +void adicionar()
+    +void remover()
+    +void atualizar()
+    +void listar()
+}
+class fichariomedico extends fichario{
+    -medico med
+}
+class fichariopaciente extends fichario{
+    -paciente pac
+}
+class ficharioconsulta extends fichario{
+    -consulta consulta
+}
+consulta -- pessoa
+consulta -- medico
+fichariomedico -- medico
+ficharioconsulta -- consulta
+fichariopaciente -- paciente
+@enduml
