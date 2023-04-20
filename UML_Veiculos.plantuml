@@ -1,0 +1,44 @@
+@startuml Veiculos
+
+class Veiculo{
+    - int numRodas;
+    - String Modelo;
+    - String Marca;
+    - String Ano;
+}
+class carro extends Veiculo{
+    - int numeroPortas;
+
+}
+class moto extends Veiculo{
+    - int numeroCilindradas
+}
+class caminhao extends Veiculo{
+    - int capacidadeCarga
+}
+class onibus extends Veiculo{
+    - int numeroAcento
+}
+interface fichario{
+    +void create()
+    +void alter()
+    +void delete()
+    +void list()
+}
+class ficharioCarro implements fichario{
+    -carro Carro
+}
+class ficharioMoto implements fichario{
+    -moto Moto
+}
+class ficharioCaminhao implements fichario{
+    -caminhao Caminhao
+}
+class ficharioOnibus implements fichario{
+    -onibus Onibus
+}
+ficharioCaminhao -- caminhao
+ficharioCarro -- carro
+ficharioMoto -- moto
+ficharioOnibus -- onibus
+@enduml
